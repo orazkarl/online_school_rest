@@ -5,10 +5,12 @@ from django.utils.translation import ugettext_lazy as _
 from .models import User, Student, Teacher, StudentGroup
 
 class StudentInline(admin.StackedInline):
+
     model = Student
     extra = 0
 
 class TeacherInline(admin.StackedInline):
+    filter_horizontal = ['student_groups']
     model = Teacher
     extra = 0
 
@@ -19,7 +21,7 @@ class UserAdmin(DjangoUserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name', 'phone_number', 'address', 'dob')}),
-        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'is_student', 'is_teacher')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
@@ -33,6 +35,7 @@ class UserAdmin(DjangoUserAdmin):
     search_fields = ('email',)
     ordering = ('email',)
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'last_login', 'date_joined',)
+
     inlines = [StudentInline, TeacherInline]
 
 
