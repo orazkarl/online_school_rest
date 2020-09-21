@@ -21,6 +21,13 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('rest_framework.urls')),
-    path('api/auth/', include('user_auth.urls')),
-    path('api/courses/', include('user_auth.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('api/', include('user_auth.urls')),
+    path('api/', include('courses.urls')),
+    path('api/', include('assignments.urls')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls.jwt')),
+]
+
+if settings.DEBUG:
+    urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

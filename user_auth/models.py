@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
-
+from courses.models import Discipline
 
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
@@ -39,7 +39,7 @@ class UserManager(BaseUserManager):
 
 class StudentGroup(models.Model):
     name = models.CharField(max_length=100, verbose_name='Названия груупы')
-
+    disciplines = models.ManyToManyField(Discipline, blank=True, related_name='student_groups')
     def __str__(self):
         return self.name
 

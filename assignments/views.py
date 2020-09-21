@@ -1,3 +1,18 @@
-from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import generics
 
-# Create your views here.
+from .models import Assignment, AssignmentTaskFile, AssignmentAnswer
+from .serializers import AssignmentCreateSerializer, AssignmentListSerializer
+
+
+class AssignmentCreateView(generics.CreateAPIView):
+    serializer_class = AssignmentCreateSerializer
+
+
+class AssignmentListView(generics.ListAPIView):
+    queryset = Assignment.objects.all()
+    serializer_class = AssignmentListSerializer
+
+
+

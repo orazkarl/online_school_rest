@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import User
 
-def home(request):
-    return HttpResponse('123')
+
 
 
 # User.objects.create(email='student3@mail.ru', first_name='student3_fname', last_name='student3_lname', password='pbkdf2_sha256$216000$wGHVMtB8d6dy$9qIamB4IQWzzWvm+CT5mUXhAsSxuE+D3a+vZa0D3M6Y=', is_student=True)
