@@ -1,7 +1,9 @@
 # Back-end Online School System
 
 Python 3.8
+<br>
 Django 3.1.1
+<br>
 Django Rest Framework 3.11.1
 
 ## Project install 
