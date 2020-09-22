@@ -1,6 +1,8 @@
 # Back-end Online School System
 
-Django REST dating app
+Python 3.8
+Django 3.1.1
+Django Rest Framework 3.11.1
 
 ## Project install 
 ```
